@@ -210,7 +210,6 @@ class Surat_model extends CI_Model
     {
         $post = $this->input->post();
         $this->no_surat = $post["no_surat"];
-        $this->kode_dosen = $post["nip"];
         $this->tanggal_surat = $post["tanggal_surat"];
         $this->periode = $post["periode"];
         $this->semester = $post["semester"];
@@ -224,13 +223,18 @@ class Surat_model extends CI_Model
         $this->dasar_keempat = $post["dasar_keempat"];
         $this->desa = $post["desa"];
         $this->kecamatan = $post["kecamatan"];
-
-        $this->pegawai_kedua = $post["pegawai_kedua"];
-        
-        $this->ppnpn_pertama = $post["ppnpn_pertama"];
-        
-        $this->ppnpn_kedua = $post["ppnpn_kedua"];
-        
+        if (isset($post['nip'])) {
+            $this->kode_dosen = $post["nip"];
+        }
+        if (isset($post['pegawai_kedua'])) {
+            $this->pegawai_kedua = $post["pegawai_kedua"];
+        }
+        if (isset($post['ppnpn_pertama'])) {
+            $this->ppnpn_pertama = $post["ppnpn_pertama"];
+        }
+        if (isset($post['ppnpn_kedua'])) {
+            $this->ppnpn_kedua = $post["ppnpn_kedua"];
+        }
         $this->lembar_ke = $post["lembar_ke"];
         $this->kode_no = $post["kode_no"];
         $this->nomor = $post["nomor"];

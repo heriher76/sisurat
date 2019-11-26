@@ -66,7 +66,7 @@ $pdf = new FPDF('p','mm','A4');
                 $pdf->MultiCell(130, 5, " Surat Pengesahan Daftar Isian Pelaksanaan Anggaran (DIPA) Nomor: SP DIPA-056.01.2.429728/2019 Tanggal 05 Desember 2018.");
         }
 
-        if($surat->dasar_kedua !== NULL) {
+        if($surat->dasar_kedua != NULL) {
                 $pdf->ln(0);
                 $pdf->setX(48);   
                 $pdf->Cell(10,5,"  2.",0,0);
@@ -74,7 +74,7 @@ $pdf = new FPDF('p','mm','A4');
                 $pdf->MultiCell(130, 5, "  ".$surat->dasar_kedua);
         }
 
-        if($surat->dasar_ketiga !== NULL) {
+        if($surat->dasar_ketiga != NULL) {
                 $pdf->ln(0);
                 $pdf->setX(48);   
                 $pdf->Cell(10,5,"  3.",0,0);
@@ -82,7 +82,7 @@ $pdf = new FPDF('p','mm','A4');
                 $pdf->MultiCell(130, 5, "  ".$surat->dasar_ketiga);
         }
 
-        if($surat->dasar_keempat !== NULL) {
+        if($surat->dasar_keempat != NULL) {
                 $pdf->ln(0);
                 $pdf->setX(48);   
                 $pdf->Cell(10,5,"  4.",0,0);
@@ -98,7 +98,7 @@ $pdf = new FPDF('p','mm','A4');
 
         $counter = 1;
 
-        if($surat->kode_dosen !== NULL) {
+        if($surat->kode_dosen != NULL) {
                 $pdf->setX(48);   
                 $pdf->Cell(10,5,"  ".$counter,0,0);
                 $pdf->setX(52);   
@@ -106,7 +106,7 @@ $pdf = new FPDF('p','mm','A4');
                 $counter++;
         }
         
-        if($surat->pegawai_kedua !== NULL) {
+        if($surat->pegawai_kedua != NULL) {
                 $pdf->ln(0);
                 $pdf->setX(48);   
                 $pdf->Cell(10,5,"  ".$counter,0,0);
@@ -115,7 +115,7 @@ $pdf = new FPDF('p','mm','A4');
                 $counter++;
         }
 
-        if($surat->ppnpn_pertama !== NULL) {
+        if($surat->ppnpn_pertama != NULL) {
                 $pdf->ln(0);
                 $pdf->setX(48);   
                 $pdf->Cell(10,5,"  ".$counter,0,0);
@@ -124,7 +124,7 @@ $pdf = new FPDF('p','mm','A4');
                 $counter++;
         }
 
-        if($surat->ppnpn_kedua !== NULL) {
+        if($surat->ppnpn_kedua != NULL) {
                 $pdf->ln(0);
                 $pdf->setX(48);   
                 $pdf->Cell(10,5,"  ".$counter,0,0);
@@ -149,10 +149,15 @@ $pdf = new FPDF('p','mm','A4');
         $pdf->Cell(20,5,strftime('%d %B %Y', strtotime($surat->tanggal_surat)),0,0,'L');
 
         $pdf->ln();
-        $pdf->setX(140);
-        $pdf->Cell(20,5,"a.n Dekan",0,0,'L');
-
         $pdf->ln();
+        $pdf->setX(140);
+        $pdf->Cell(20,5,"a.n Kepala Kantor Pertanahan",0,0,'L');
+        $pdf->ln();
+
+        $pdf->setX(145);
+        $pdf->Cell(20,5,"Kabupaten Sumedang",0,0,'L');
+        $pdf->ln();
+
         $pdf->setX(156);
         $pdf->Cell(20,5,$surat->jabatan,0,0,'C');
 
@@ -166,9 +171,350 @@ $pdf = new FPDF('p','mm','A4');
         $pdf->setX(154);
         $pdf->Cell(20,5,'NIP. '.$surat->nip_pejabat,0,0,'C');
 
+        //==================================================================
+        // function MultiCellRow($cells, $width, $height, $data, $pdf)
+        // {
+        //     $x = $pdf->GetX();
+        //     $y = $pdf->GetY();
+        //     $maxheight = 0;
+
+        //     for ($i = 0; $i < $cells; $i++) {
+        //         if($i === 0) $lebar = 10;
+        //         else if($i === 1) $lebar = $width;
+        //         else if($i === 2) $lebar = $width;
+
+        //         $pdf->MultiCell($lebar, $height, $data[$i]); 
+                           
+        //         if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
+
+        //         $pdf->SetXY($x + ($lebar * ($i + 1)), $y);
+        //     }
+
+        //     for ($i = 0; $i < $cells + 1; $i++) {
+        //         if($i === 1) $lebar = 10;
+        //         else if($i === 2) $lebar = $width-40;
+        //         else if($i === 3)$lebar = $width-20;
+        //         else $lebar = $width-60;
+
+        //         $pdf->Line($x + $lebar * $i, $y, $x + $lebar * $i, $y + $maxheight);
+        //         $pdf->Line($x, $y, $x + $lebar * $cells, $y);
+        //         $pdf->Line($x, $y + $maxheight, $x + $lebar * $cells, $y + $maxheight);
+        //     }
+
+        // }
+
+        // function MultiCellRow($cells, $width, $height, $data, $pdf)
+        // {
+        //     $x = $pdf->GetX();
+        //     $y = $pdf->GetY();
+        //     $maxheight = 70;
+
+        //     for ($i = 0; $i < $cells; $i++) {
+        //         $height = (ceil(($pdf->GetStringWidth($data[$i]) / $width)) * $height);
+        //         $pdf->MultiCell($width, $height, $data[$i]);
+        //         if ($pdf->GetY() - $y > $maxheight) $maxheight = $pdf->GetY() - $y;
+        //         $pdf->SetXY($x + ($width * ($i + 1)), $y);
+        //     }
+
+        //     for ($i = 0; $i < $cells + 1; $i++) {
+        //         $pdf->Line($x + $width * $i, $y, $x + $width * $i, $y + $maxheight);
+        //     }
+
+        //     $pdf->Line($x, $y, $x + $width * $cells, $y);
+        //     $pdf->Line($x, $y + $maxheight, $x + $width * $cells, $y + $maxheight);
+        // }
+
+        $pdf->addPage();
+        $pdf->SetMargins(10, 10 , 10, 10);
+        $pdf->SetFont('Arial','',10);
+        $pdf->MultiCell(220,3,'BADAN PERTANAHAN NASIONAL REPUBLIK INDONESIA');
+        $pdf->setY(10);
+        $pdf->setX(110);
+        $pdf->MultiCell(220,3,"Lembar ke       : ".$surat->lembar_ke);
+        $pdf->SetFont('Arial','',10);
+        $pdf->ln(2);
+        $pdf->Cell(220,3,'KANTOR PERTANAHAN KABUPATEN SUMEDANG',0,1,'L');
+        $pdf->setY(15);
+        $pdf->setX(110);
+        $pdf->MultiCell(220,3,"Kode No          : ".$surat->kode_no);
+        $pdf->ln(2);
+        $pdf->Cell(220,3,'PROVINSI JAWA BARAT',0,1,'L');
+        $pdf->setY(20);
+        $pdf->setX(110);
+        $pdf->MultiCell(220,3,"Nomor             : ".$surat->nomor);
+        $pdf->ln(2);
+        $pdf->ln(2);
+        #tampilkan judul laporan
+        $pdf->SetFont('Arial','',10);
+        $pdf->Cell(0,20, 'SURAT PERJALANAN DINAS ( SPD )', 0, 1, 'C');
+
+        $pdf->SetFont('Arial','','10');
+        $pdf->SetFillColor(255,255,255);
+        $pdf->SetTextColor(0,0,0);
+        $pdf->SetDrawColor(0,0,0);
+        $pdf->SetLineWidth(.3);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="1";
+        $pdf->MultiCell(10, 5, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Pejabat Pembuat Komitmen";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3=$surat->nama_pejabat;
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="2";
+        $pdf->MultiCell(10, 10, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Nama/NIP pegawai yang melaksanakan\r\nperjalanan dinas";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3=$surat->nama_pegawai."\r\nNIP. ".$surat->kode_dosen;
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="3";
+        $pdf->MultiCell(10, 20, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="a. Pangkat dan Golongan\r\nb. Jabatan / Instansi\r\n\r\nc. Tingkat Biaya Perjalanan Dinas";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3="a. ".$surat->golongan_pegawai_pertama."\r\nb. ".$surat->jabatan_pegawai_pertama."\r\n\r\nc. "."C";
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col3=$surat->alasan;
+
+        $ketinggian = ceil(($pdf->GetStringWidth($col3) / 100)) * 5;
+
+        $col1="4";
+        $pdf->MultiCell(10, $ketinggian, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Maksud Perjalanan Dinas";
+        $pdf->MultiCell(80, $ketinggian, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="5";
+        $pdf->MultiCell(10, 5, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Alat angkut yang dipergunakan";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3=$surat->kendaraan;
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="6";
+        $pdf->MultiCell(10, 10, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="a. Tempat Berangkat\r\nb. Tempat Tujuan";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3="a. ".$surat->berangkat."\r\nb. ".$surat->tujuan;
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="7";
+        $pdf->MultiCell(10, 20, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="a. Lamanya perjalanan dinas\r\nb. Tanggal berangkat\r\nc. Tanggal harus kembali/tiba di\r\n    tempat baru";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3="a. ".$jumlahHari." hari\r\nb. ".strftime('%d %B %Y', strtotime($surat->tanggal_mulai))."\r\nc. ".strftime('%d %B %Y', strtotime($surat->tanggal_selesai))."\r\n  ";
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="8";
+        $pdf->MultiCell(10, 5, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Pengikut :                   Nama\r\n1.\r\n2.\r\n3.\r\n4.\r\n5.";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Tanggal Lahir";
+        $pdf->MultiCell(50, 5, $col2, 1, "C");
+        $pdf->SetXY($x + 50, $y);
+
+        $col3="Keterangan";
+        $pdf->MultiCell(50, 5, $col3, 1, "C");
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1=" ";
+        $pdf->MultiCell(10, 25, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $pengikut1 = ['','',''];
+        $pengikut2 = ['','',''];
+        $pengikut3 = ['','',''];
+        $pengikut4 = ['','',''];
+        $pengikut5 = ['','',''];
+        if ($surat->pengikut1 != NULL) {
+                $pengikut1 = explode(",",$surat->pengikut1);
+        }
+        if ($surat->pengikut2 != NULL) {
+                $pengikut2 = explode(",",$surat->pengikut2);
+        }
+        if ($surat->pengikut3 != NULL) {
+                $pengikut3 = explode(",",$surat->pengikut3);
+        }
+        if ($surat->pengikut4 != NULL) {
+                $pengikut4 = explode(",",$surat->pengikut4);
+        }
+        if ($surat->pengikut5 != NULL) {
+                $pengikut5 = explode(",",$surat->pengikut5);
+        }
+
+        $col2="1. ".$pengikut1[0]."\r\n2. ".$pengikut2[0]."\r\n3. ".$pengikut3[0]."\r\n4. ".$pengikut4[0]."\r\n5. ".$pengikut5[0];
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="1. ".$pengikut1[1]."\r\n2. ".$pengikut2[1]."\r\n3. ".$pengikut3[1]."\r\n4. ".$pengikut4[1]."\r\n5. ".$pengikut5[1];
+        $pdf->MultiCell(50, 5, $col2, 1);
+        $pdf->SetXY($x + 50, $y);
+
+        $col3="1. ".$pengikut1[2]."\r\n2. ".$pengikut2[2]."\r\n3. ".$pengikut3[2]."\r\n4. ".$pengikut4[2]."\r\n5. ".$pengikut5[2];
+        $pdf->MultiCell(50, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="9";
+        $pdf->MultiCell(10, 15, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Pembebanan Anggaran\r\na. Instansi\r\nb. Akun";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3="\r\na. ".$surat->instansi."\r\nb. ".$surat->akun;
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(0);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col1="10";
+        $pdf->MultiCell(10, 5, $col1, 1, 1);
+        $pdf->SetXY($x + 10, $y);
+
+        $x = $pdf->GetX();
+        $y = $pdf->GetY();
+
+        $col2="Keterangan lain-lain";
+        $pdf->MultiCell(80, 5, $col2, 1);
+        $pdf->SetXY($x + 80, $y);
+
+        $col3=$surat->keterangan;
+        $pdf->MultiCell(100, 5, $col3, 1);
+        $pdf->Ln(2);
+
+        $pdf->Cell(50,5,'* coret yang tidak perlu',0,0,'C');
+
+        $pdf->ln(10);
+        $pdf->setX(130);
+        $pdf->Cell(20,5,"Dikeluarkan di         : Sumedang",0,0,'L');
+
+        $pdf->ln();
+        $pdf->setX(130);
+        $pdf->Cell(20,5,"Tanggal                   : ".strftime('%d %B %Y', strtotime($surat->tanggal_surat)),0,0,'L');
+
+        $pdf->ln(12);
+        $pdf->setX(154);
+        $pdf->Cell(20,5,"Pejabat Pembuat Komitmen",0,0,'C');
+
+        $pdf->ln(32);
+        $pdf->SetFont('Times','B',10);
+        $pdf->setX(154);
+        $pdf->Cell(20,5,$surat->nama_pejabat,0,0,'C');
+
+        $pdf->SetFont('Times','',10);
+        $pdf->ln();
+        $pdf->setX(154);
+        $pdf->Cell(20,5,'NIP. '.$surat->nip_pejabat,0,0,'C');
 
         $pdf->Output();
-
 ?>
 
 <body>

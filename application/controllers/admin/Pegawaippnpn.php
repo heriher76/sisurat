@@ -44,8 +44,8 @@ class Pegawaippnpn extends CI_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $data["pegawai"] = $pegawai->getById($id);
-        if (!$data["pegawai"]) show_404();
+        $data["pegawaippnpn"] = $pegawai->getById($id);
+        if (!$data["pegawaippnpn"]) show_404();
         
         $this->load->view("admin/pegawaippnpn/edit_form", $data);
     }

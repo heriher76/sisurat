@@ -65,8 +65,6 @@
 											<?php echo $surat->tanggal_selesai ?>
 										</td>
 										<td width="250">
-											<a href="<?php echo site_url('admin/surat/edit/'.$surat->id_surat) ?>"
-											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
 											<a onclick="deleteConfirm('<?php echo site_url('admin/surat/delete/'.$surat->id_surat) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 											<a href="<?php echo site_url('admin/surat/print/'.$surat->id_surat) ?>"

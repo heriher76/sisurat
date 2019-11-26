@@ -13,7 +13,6 @@ class Overview extends CI_Controller {
 	{
 		if($this->login_model->logged_id())
 		{
-			$data["dosen"] = $this->dosen_model->getAll();
 			$data["surat"] = $this->surat_model->jumlahSurat();	
 			$this->load->view("admin/overview",$data);		
 		}else{

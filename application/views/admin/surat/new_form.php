@@ -29,7 +29,7 @@
 						<a href="<?php echo site_url('admin/') ?>"><i class="fas fa-arrow-left"></i> Back</a>
 					</div>
 					<div class="card-body">
-
+						<h3>Lembar Pertama</h3>
 					
 						<form action="<?php base_url('admin/jadwal/add') ?>" method="post" enctype="multipart/form-data" >
 							
@@ -44,8 +44,7 @@
 
 							<div class="form-group">
 								<label for="name">Pejabat Pemberi Perintah*</label>
-								<select class="form-control  <?php echo form_error('kode_pejabat') ? 'is-invalid':'' ?>"  name="kode_pejabat" >
-								<option>Pilih Pejabat</option>	
+								<select class="form-control  <?php echo form_error('kode_pejabat') ? 'is-invalid':'' ?>"  name="kode_pejabat" >	
 								<?php foreach ($pejabat as $pejabat): ?>	
 								<option value="<?php echo $pejabat->kode_pejabat;?>"><?php echo $pejabat->nama;?></option>
 								<?php endforeach; ?>
@@ -58,7 +57,7 @@
 							<div class="form-group">
 								<label for="name">Pegawai 1 Yang Diperitah*</label>
 								<select class="form-control  <?php echo form_error('nip') ? 'is-invalid':'' ?>"  name="nip" >
-								<option>Pilih Pegawai</option>	
+								<option value="" selected disabled hidden>Pilih Pegawai</option>
 								<?php foreach ($pegawai as $pegawai_pertama): ?>	
 								<option value="<?php echo $pegawai_pertama->NIP;?>"><?php echo $pegawai_pertama->Nama;?></option>
 								<?php endforeach; ?> 
@@ -71,8 +70,8 @@
 
 							<div class="form-group">
 								<label for="name">Pegawai 2 Yang Diperitah*</label>
-								<select class="form-control  <?php echo form_error('pegawai_kedua') ? 'is-invalid':'' ?>"  name="pegawai_kedua" >
-								<option>Pilih Pegawai</option>	
+								<select class="form-control  <?php echo form_error('pegawai_kedua') ? 'is-invalid':'' ?>"  name="pegawai_kedua" >	
+								<option value="" selected disabled hidden>Pilih Pegawai</option>
 								<?php foreach ($pegawai as $pegawai_kedua): ?>	
 								<option value="<?php echo $pegawai_kedua->NIP;?>"><?php echo $pegawai_kedua->Nama;?></option>
 								<?php endforeach; ?> 
@@ -85,8 +84,8 @@
 
 							<div class="form-group">
 								<label for="name">Pegawai PPNPN 1 Yang Diperitah*</label>
-								<select class="form-control  <?php echo form_error('ppnpn_pertama') ? 'is-invalid':'' ?>"  name="ppnpn_pertama" >
-								<option>Pilih Pegawai</option>	
+								<select class="form-control  <?php echo form_error('ppnpn_pertama') ? 'is-invalid':'' ?>"  name="ppnpn_pertama" >								
+								<option value="" selected disabled hidden>Pilih Pegawai PPNPN</option>
 								<?php foreach ($pegawaippnpn as $ppnpn_pertama): ?>	
 								<option value="<?php echo $ppnpn_pertama->id;?>"><?php echo $ppnpn_pertama->nama;?></option>
 								<?php endforeach; ?> 
@@ -100,7 +99,7 @@
 							<div class="form-group">
 								<label for="name">Pegawai PPNPN 2 Yang Diperitah*</label>
 								<select class="form-control  <?php echo form_error('ppnpn_kedua') ? 'is-invalid':'' ?>"  name="ppnpn_kedua" >
-								<option>Pilih Pegawai</option>	
+								<option value="" selected disabled hidden>Pilih Pegawai PPNPN</option>
 								<?php foreach ($pegawaippnpn as $ppnpn_kedua): ?>	
 								<option value="<?php echo $ppnpn_kedua->id;?>"><?php echo $ppnpn_kedua->nama;?></option>
 								<?php endforeach; ?> 
@@ -218,6 +217,145 @@
 								 type="text" name="kecamatan" placeholder="Masukan Kecamatan" />
 								<div class="invalid-feedback">
 									<?php echo form_error('kecamatan') ?>
+								</div>
+							</div>
+
+							<hr style="border-bottom: 1px solid black">
+
+							<h3>Lembar Kedua</h3>
+
+							<div class="form-group">
+								<label for="name">Lembar Ke*</label>
+								<input class="form-control <?php echo form_error('lembar_ke') ? 'is-invalid':'' ?>"
+								 type="text" name="lembar_ke" placeholder="Lembar Ke" />
+								<div class="invalid-feedback">
+									<?php echo form_error('lembar_ke') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Kode No*</label>
+								<input class="form-control <?php echo form_error('kode_no') ? 'is-invalid':'' ?>"
+								 type="text" name="kode_no" placeholder="Kode No" />
+								<div class="invalid-feedback">
+									<?php echo form_error('kode_no') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Nomor*</label>
+								<input class="form-control <?php echo form_error('nomor') ? 'is-invalid':'' ?>"
+								 type="text" name="nomor" placeholder="Nomor" />
+								<div class="invalid-feedback">
+									<?php echo form_error('nomor') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Tingkat Biaya Perjalanan Dinas*</label>
+								<input class="form-control <?php echo form_error('tingkat_biaya') ? 'is-invalid':'' ?>"
+								 type="text" name="tingkat_biaya" placeholder="Tingkat Biaya Perjalanan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('tingkat_biaya') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Kendaraan*</label>
+								<input class="form-control <?php echo form_error('kendaraan') ? 'is-invalid':'' ?>"
+								 type="text" name="kendaraan" placeholder="Kendaraan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('kendaraan') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Tempat Berangkat*</label>
+								<input class="form-control <?php echo form_error('berangkat') ? 'is-invalid':'' ?>"
+								 type="text" name="berangkat" placeholder="Tempat Berangkat" />
+								<div class="invalid-feedback">
+									<?php echo form_error('berangkat') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Tempat Tujuan*</label>
+								<input class="form-control <?php echo form_error('tujuan') ? 'is-invalid':'' ?>"
+								 type="text" name="tujuan" placeholder="Tempat Tujuan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('tujuan') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Pengikut 1 (Perhatikan Format)*</label>
+								<input class="form-control <?php echo form_error('pengikut1') ? 'is-invalid':'' ?>"
+								 type="text" name="pengikut1" placeholder="*Format: Nama,TanggalLahir,Keterangan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('pengikut1') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Pengikut 2 (Perhatikan Format)*</label>
+								<input class="form-control <?php echo form_error('pengikut2') ? 'is-invalid':'' ?>"
+								 type="text" name="pengikut2" placeholder="*Format: Nama,TanggalLahir,Keterangan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('pengikut2') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Pengikut 3 (Perhatikan Format)*</label>
+								<input class="form-control <?php echo form_error('pengikut3') ? 'is-invalid':'' ?>"
+								 type="text" name="pengikut3" placeholder="*Format: Nama,TanggalLahir,Keterangan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('pengikut3') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Pengikut 4 (Perhatikan Format)*</label>
+								<input class="form-control <?php echo form_error('pengikut4') ? 'is-invalid':'' ?>"
+								 type="text" name="pengikut4" placeholder="*Format: Nama,TanggalLahir,Keterangan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('pengikut4') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Pengikut 5 (Perhatikan Format)*</label>
+								<input class="form-control <?php echo form_error('pengikut5') ? 'is-invalid':'' ?>"
+								 type="text" name="pengikut5" placeholder="*Format: Nama,TanggalLahir,Keterangan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('pengikut5') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Pembebanan Anggaran (Instansi)*</label>
+								<input class="form-control <?php echo form_error('instansi') ? 'is-invalid':'' ?>"
+								 type="text" name="instansi" placeholder="Nama Instansi" />
+								<div class="invalid-feedback">
+									<?php echo form_error('instansi') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Pembebanan Anggaran (Akun)*</label>
+								<input class="form-control <?php echo form_error('akun') ? 'is-invalid':'' ?>"
+								 type="text" name="akun" placeholder="Nama Akun" />
+								<div class="invalid-feedback">
+									<?php echo form_error('akun') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="name">Keterangan Lain*</label>
+								<input class="form-control <?php echo form_error('keterangan') ? 'is-invalid':'' ?>"
+								 type="text" name="keterangan" placeholder="Nama Keterangan" />
+								<div class="invalid-feedback">
+									<?php echo form_error('keterangan') ?>
 								</div>
 							</div>
 

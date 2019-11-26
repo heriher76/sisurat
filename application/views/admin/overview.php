@@ -48,10 +48,10 @@
 				<div class="card-body-icon">
 					<i class="fas fa-fw fa-users"></i>
 				</div>
-				<div class="mr-5"><?php $query = $this->db->query('SELECT * FROM dosen');
+				<div class="mr-5"><?php $query = $this->db->query('SELECT * FROM pegawai');
 					echo $query->num_rows(); ?> Pegawai</div>
 				</div>
-				<a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/dosen') ?>">
+				<a class="card-footer text-white clearfix small z-1" href="<?php echo site_url('admin/pegawai') ?>">
 				<span class="float-left">Lihat Detail</span>
 				<span class="float-right">
 					<i class="fas fa-angle-right"></i>
@@ -83,37 +83,6 @@
 					<div class="card-footer small text-muted">Pintasan untuk membuat surat tugas dosen baru</div>
 				</div>
 
-				<div class="card m-3 col">
-					<div class="card-header">
-					<i class="fas fa-print"></i>
-					Cetak Surat Cepat </div>
-					<div class="card-body">
-
-						<form action="http://127.1.1.1/sisurat/index.php/cetak" method="post" enctype="multipart/form-data" >
-							<div class="form-group">
-								
-							<select class="form-control  <?php echo form_error('kode_dosen') ? 'is-invalid':'' ?>"  name="kode_dosen" >
-								<option>Pilih Dosen</option>	
-								<?php foreach ($dosen as $dosen): ?>	
-								<option value="<?php echo $dosen->kode_dosen;?>"><?php echo $dosen->nama;?> </option>
-								
-								<?php endforeach; ?> 
-							
-							</select>
-							<div class="invalid-feedback">
-								<?php echo form_error('kode_dosen') ?>
-							</div>
-						
-							</div>
-							<div class="text-center">	
-								<input class="btn btn-success" type="submit" name="btn" value="Cetak" />			
-							</div>
-							
-						</form>
-			
-					</div>
-					<div class="card-footer small text-muted">Pintasan untuk mencetak surat tugas dosen</div>
-				</div>
 			</div>
 		</div>
 

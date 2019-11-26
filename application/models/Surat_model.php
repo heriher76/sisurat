@@ -85,7 +85,52 @@ class Surat_model extends CI_Model
             'label' => 'PPNPN Pertama'],
             
             ['field' => 'ppnpn_kedua',
-            'label' => 'PPNPN Kedua']
+            'label' => 'PPNPN Kedua'],
+
+            ['field' => 'lembar_ke',
+            'label' => 'Lembar Ke'],
+
+            ['field' => 'kode_no',
+            'label' => 'Kode No'],
+
+            ['field' => 'nomor',
+            'label' => 'Nomor'],
+
+            ['field' => 'tingkat_biaya',
+            'label' => 'Tingkat Biaya Perjalanan'],
+
+            ['field' => 'kendaraan',
+            'label' => 'Kendaraan'],
+
+            ['field' => 'berangkat',
+            'label' => 'Tempat Berangkat'],
+
+            ['field' => 'tujuan',
+            'label' => 'Tempat Tujuan'],
+
+            ['field' => 'pengikut1',
+            'label' => 'Pengikut 1'],
+
+            ['field' => 'pengikut2',
+            'label' => 'Pengikut 2'],
+
+            ['field' => 'pengikut3',
+            'label' => 'Pengikut 3'],
+
+            ['field' => 'pengikut4',
+            'label' => 'Pengikut 4'],
+
+            ['field' => 'pengikut5',
+            'label' => 'Pengikut 5'],
+
+            ['field' => 'instansi',
+            'label' => 'Instansi'],
+
+            ['field' => 'akun',
+            'label' => 'Akun'],
+
+            ['field' => 'keterangan',
+            'label' => 'Keterangan'],
         ];
     }
 
@@ -143,11 +188,9 @@ class Surat_model extends CI_Model
     }
     public function cetakS($kode_dosen)
     {
-        $this->db->select('surat.*,dosen.nama as nama_dosen, pejabat.nip as nip_pejabat, pejabat.nama as nama_pejabat, pejabat.jabatan ');
+        $this->db->select('surat.*, pejabat.nip as nip_pejabat, pejabat.nama as nama_pejabat, pejabat.jabatan ');
             $this->db->from('surat');
-            $this->db->join('dosen', 'dosen.kode_dosen = surat.kode_dosen');
             $this->db->join('pejabat', 'pejabat.kode_pejabat = surat.kode_pejabat');
-            $this->db->where('surat.kode_dosen='.$kode_dosen);
         
             return $query = $this->db->get()->row_array();
     }
@@ -155,12 +198,7 @@ class Surat_model extends CI_Model
 
     public  function cetakJadwal($kode_dosen)
     {
-             $this->db->select('cetak_jadwal.*');
-            $this->db->from('cetak_jadwal');
-            $this->db->where('kode_dosen='. $kode_dosen);
-        
-            $query = $this->db->get();
-            return $query->result();
+        //
     }
     
     public function getById($id_surat)
@@ -186,9 +224,28 @@ class Surat_model extends CI_Model
         $this->dasar_keempat = $post["dasar_keempat"];
         $this->desa = $post["desa"];
         $this->kecamatan = $post["kecamatan"];
+
         $this->pegawai_kedua = $post["pegawai_kedua"];
+        
         $this->ppnpn_pertama = $post["ppnpn_pertama"];
+        
         $this->ppnpn_kedua = $post["ppnpn_kedua"];
+        
+        $this->lembar_ke = $post["lembar_ke"];
+        $this->kode_no = $post["kode_no"];
+        $this->nomor = $post["nomor"];
+        $this->tingkat_biaya = $post["tingkat_biaya"];
+        $this->kendaraan = $post["kendaraan"];
+        $this->berangkat = $post["berangkat"];
+        $this->tujuan = $post["tujuan"];
+        $this->pengikut1 = $post["pengikut1"];
+        $this->pengikut2 = $post["pengikut2"];
+        $this->pengikut3 = $post["pengikut3"];
+        $this->pengikut4 = $post["pengikut4"];
+        $this->pengikut5 = $post["pengikut5"];
+        $this->akun = $post["akun"];
+        $this->instansi = $post["instansi"];
+        $this->keterangan = $post["keterangan"];
         $this->db->insert($this->_table, $this);
     }
 
@@ -202,7 +259,6 @@ class Surat_model extends CI_Model
     public function update()
     {
         $post = $this->input->post();
-        $this->id_surat = $post["id_surat"];
         $this->no_surat = $post["no_surat"];
         $this->kode_dosen = $post["kode_dosen"];
         $this->tanggal_surat = $post["tanggal_surat"];
@@ -221,6 +277,21 @@ class Surat_model extends CI_Model
         $this->pegawai_kedua = $post["pegawai_kedua"];
         $this->ppnpn_pertama = $post["ppnpn_pertama"];
         $this->ppnpn_kedua = $post["ppnpn_kedua"];
+        $this->lembar_ke = $post["lembar_ke"];
+        $this->kode_no = $post["kode_no"];
+        $this->nomor = $post["nomor"];
+        $this->tingkat_biaya = $post["tingkat_biaya"];
+        $this->kendaraan = $post["kendaraan"];
+        $this->berangkat = $post["berangkat"];
+        $this->tujuan = $post["tujuan"];
+        $this->pengikut1 = $post["pengikut1"];
+        $this->pengikut2 = $post["pengikut2"];
+        $this->pengikut3 = $post["pengikut3"];
+        $this->pengikut4 = $post["pengikut4"];
+        $this->pengikut5 = $post["pengikut5"];
+        $this->akun = $post["akun"];
+        $this->instansi = $post["instansi"];
+        $this->keterangan = $post["keterangan"];
         $this->db->update($this->_table, $this, array('id_surat' => $post['id_surat']));
     }
 

@@ -33,42 +33,42 @@
 					</div>
 					<div class="card-body">
 
-						<form action="<?php base_url(" admin/dosen/edit") ?>" method="post"
+						<form action="<?php base_url(" admin/pegawai/edit") ?>" method="post"
 							enctype="multipart/form-data" >
 
 							<div class="form-group">
-								<label for="kode_dosen">Kode dosen*</label>
-								<input class="form-control <?php echo form_error('kode_dosen') ? 'is-invalid':'' ?> disabled"
-								 type="text" name="kode_dosen" placeholder="Kode dosen" value="<?php echo $dosen->kode_dosen ?>"  readonly />
-								<div class="invalid-feedback">
-									<?php echo form_error('kode_dosen') ?>
-								</div>
-							</div>
-
-							<div class="form-group">
 								<label for="name">NIP*</label>
-								<input class="form-control <?php echo form_error('nip') ? 'is-invalid':'' ?>"
-								 type="number" name="nip" placeholder="NIP" value="<?php echo $dosen->nip ?>"/>
+								<input class="form-control <?php echo form_error('NIP') ? 'is-invalid':'' ?>"
+								 type="number" name="nip" placeholder="NIP" value="<?php echo $pegawai->NIP ?>"/>
 								<div class="invalid-feedback">
-									<?php echo form_error('nip') ?>
+									<?php echo form_error('NIP') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="name">NIDN*</label>
-								<input class="form-control <?php echo form_error('nidn') ? 'is-invalid':'' ?>"
-								 type="text" name="nidn" placeholder="NIDN" value="<?php echo $dosen->nidn ?>"/>
+								<label for="nama">Nama Pegawai*</label>
+								<input class="form-control <?php echo form_error('Nama') ? 'is-invalid':'' ?>"
+								 type="text" name="nama" placeholder="Nama dosen" value="<?php echo $pegawai->Nama ?>" />
 								<div class="invalid-feedback">
-									<?php echo form_error('nidn') ?>
+									<?php echo form_error('Nama') ?>
 								</div>
 							</div>
 
 							<div class="form-group">
-								<label for="nama">Nama dosen*</label>
-								<input class="form-control <?php echo form_error('nama') ? 'is-invalid':'' ?>"
-								 type="text" name="nama" placeholder="Nama dosen" value="<?php echo $dosen->nama ?>" />
+								<label for="nama">Golongan*</label>
+								<input class="form-control <?php echo form_error('Golongan') ? 'is-invalid':'' ?>"
+								 type="text" name="golongan" placeholder="Golongan" value="<?php echo $pegawai->Golongan ?>" />
 								<div class="invalid-feedback">
-									<?php echo form_error('nama') ?>
+									<?php echo form_error('Golongan') ?>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<label for="nama">Jabatan*</label>
+								<input class="form-control <?php echo form_error('Jabatan') ? 'is-invalid':'' ?>"
+								 type="text" name="jabatan" placeholder="Jabatan" value="<?php echo $pegawai->Jabatan ?>" />
+								<div class="invalid-feedback">
+									<?php echo form_error('Jabatan') ?>
 								</div>
 							</div>
 

@@ -44,9 +44,9 @@
 											<?php echo $pegawai->jabatan ?>
 										</td>
 										<td width="250">
-											<a href="<?php echo site_url('admin/pegawai/edit/'.$pegawai->id) ?>"
+											<a href="<?php echo site_url('admin/pegawaippnpn/edit/'.$pegawai->id) ?>"
 											 class="btn btn-small"><i class="fas fa-edit"></i> Edit</a>
-											<a onclick="deleteConfirm('<?php echo site_url('admin/pegawai/delete/'.$pegawai->id) ?>')"
+											<a onclick="deleteConfirm('<?php echo site_url('admin/pegawaippnpn/delete/'.$pegawai->id) ?>')"
 											 href="#!" class="btn btn-small text-danger"><i class="fas fa-trash"></i> Hapus</a>
 										</td>
 									</tr>
